@@ -12,8 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Say hello
-        run: echo "My Second CI run!"
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+         
         
-      - name: List files in repo
-        run: ls -l
+      - name: Install test dependencies
+        run: pip install pytest
+
+      - name: Run tests
+        run: pytest
